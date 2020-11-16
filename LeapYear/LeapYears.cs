@@ -12,12 +12,12 @@ namespace LeapYear
                 return true;
             }
 
-            if (IsDivisibleBy100(year) && year % 400 != 0)
+            if (IsDivisibleBy100(year) && !IsDivisibleBy400(year))
             {
                 return false;
             }
 
-            if (year % 400 == 0)
+            if (IsDivisibleBy400(year))
             {
                 return true;
             }
@@ -28,6 +28,11 @@ namespace LeapYear
             }
 
             return false;
+        }
+
+        private static bool IsDivisibleBy400(int year)
+        {
+            return year % 400 == 0;
         }
 
         private static bool IsDivisibleBy100(int year)
