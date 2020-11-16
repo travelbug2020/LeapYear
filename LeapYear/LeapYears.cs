@@ -7,12 +7,12 @@ namespace LeapYear
         public bool Calculate(int year)
         {
 
-            if (IsDivisibleBy4(year) && year % 100 != 0)
+            if (IsDivisibleBy4(year) && !IsDivisibleBy100(year))
             {
                 return true;
             }
 
-            if (year % 100 == 0 && year % 400 != 0)
+            if (IsDivisibleBy100(year) && year % 400 != 0)
             {
                 return false;
             }
@@ -28,6 +28,11 @@ namespace LeapYear
             }
 
             return false;
+        }
+
+        private static bool IsDivisibleBy100(int year)
+        {
+            return year % 100 == 0;
         }
 
         private static bool IsDivisibleBy4(int year)
