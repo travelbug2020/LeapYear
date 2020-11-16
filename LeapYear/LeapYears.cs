@@ -7,7 +7,7 @@ namespace LeapYear
         public bool Calculate(int year)
         {
 
-            if (year % 4 == 0 && year % 100 != 0)
+            if (IsDivisibleBy4(year) && year % 100 != 0)
             {
                 return true;
             }
@@ -22,12 +22,17 @@ namespace LeapYear
                 return true;
             }
 
-            if (year % 4 != 0)
+            if (!IsDivisibleBy4(year))
             {
                 return false;
             }
 
             return false;
+        }
+
+        private static bool IsDivisibleBy4(int year)
+        {
+            return year % 4 == 0;
         }
     }
 }
