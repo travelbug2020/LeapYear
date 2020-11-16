@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Runtime.CompilerServices;
 
 namespace LeapYear
 {
@@ -7,37 +7,30 @@ namespace LeapYear
         public bool Calculate(int year)
         {
 
-            if (IsDivisibleBy4(year) && !IsDivisibleBy100(year))
+            if (year.IsDivisibleBy(4) && !year.IsDivisibleBy(100))
             {
                 return true;
             }
 
-            if (IsDivisibleBy100(year) && !IsDivisibleBy400(year))
+            if (year.IsDivisibleBy(100) && !year.IsDivisibleBy(400))
             {
                 return false;
             }
 
-            if (IsDivisibleBy400(year))
+            if (year.IsDivisibleBy(400))
             {
                 return true;
             }
 
             return false;
         }
+    }
 
-        private static bool IsDivisibleBy400(int year)
+    public static class LeapYearsExtensions
+    {
+        public static bool IsDivisibleBy(this int dividend, int divisor)
         {
-            return year % 400 == 0;
-        }
-
-        private static bool IsDivisibleBy100(int year)
-        {
-            return year % 100 == 0;
-        }
-
-        private static bool IsDivisibleBy4(int year)
-        {
-            return year % 4 == 0;
+            return dividend % divisor == 0;
         }
     }
 }
