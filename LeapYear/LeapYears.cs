@@ -22,11 +22,6 @@ namespace LeapYear
                 return true;
             }
 
-            if (!IsDivisibleBy4(year))
-            {
-                return false;
-            }
-
             return false;
         }
 
